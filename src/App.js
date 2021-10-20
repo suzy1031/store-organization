@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import StoreOrganization from './components/StoreOrganization';
+import SideMenu from './components/SideMenu';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <CssBaseline />
+      <Route exact path='/' component={StoreOrganization} />
+      <Route
+        path='/report'
+        render={() => <SideMenu pageTitle={'これはレポートです'} />}
+      />
+      <Route
+        path='/todo'
+        render={() => <SideMenu pageTitle={'これはTodoです'} />}
+      />
+      <Route
+        path='/clip'
+        render={() => <SideMenu pageTitle={'これはクリップです'} />}
+      />
+    </Router>
   );
 }
 
