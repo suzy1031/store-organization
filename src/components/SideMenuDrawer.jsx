@@ -92,9 +92,9 @@ const SideMenuDrawer = (props) => {
   const drawer = (
     <div>
       <div className={classes.toolbar}>
-        <Box display='flex' justifyContent='center'>
+        <Box display="flex" justifyContent="center">
           <Box p={1}>
-            <Avatar alt='kohei' src='/images/kohei.jpg' />
+            <Avatar alt="kohei" src="/images/kohei.jpg" />
           </Box>
           <Box p={1}>
             <p>菅原 康平</p>
@@ -106,9 +106,7 @@ const SideMenuDrawer = (props) => {
       <List>
         {pathName.map((text, index) => (
           <ListItem button key={text.menuLabel}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <Link to={text.path}>
               <ListItemText primary={text.menuLabel} />
             </Link>
@@ -118,8 +116,7 @@ const SideMenuDrawer = (props) => {
     </div>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -128,12 +125,12 @@ const SideMenuDrawer = (props) => {
   };
 
   return (
-    <nav className={classes.drawer} aria-label='mailbox folders'>
+    <nav className={classes.drawer} aria-label="mailbox folders">
       {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-      <Hidden smUp implementation='css'>
+      <Hidden smUp implementation="css">
         <Drawer
           container={container}
-          variant='temporary'
+          variant="temporary"
           anchor={theme.direction === 'rtl' ? 'right' : 'left'}
           open={mobileOpen}
           onClose={handleDrawerToggle}
@@ -147,12 +144,12 @@ const SideMenuDrawer = (props) => {
           {drawer}
         </Drawer>
       </Hidden>
-      <Hidden xsDown implementation='css'>
+      <Hidden xsDown implementation="css">
         <Drawer
           classes={{
             paper: classes.drawerPaper,
           }}
-          variant='permanent'
+          variant="permanent"
           open
         >
           {drawer}

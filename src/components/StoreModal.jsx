@@ -45,13 +45,8 @@ export default function SimpleModal({
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <Grid
-        container
-        direction='row'
-        justifyContent='center'
-        alignItems='center'
-      >
-        <form className={classes.root} noValidate autoComplete='off'>
+      <Grid container direction="row" justifyContent="center" alignItems="center">
+        <form className={classes.root} noValidate autoComplete="off">
           <TextField
             id={type.attribute}
             name={type.attribute}
@@ -59,7 +54,7 @@ export default function SimpleModal({
             onChange={(e) => handleInput(e)}
           />
           <Button
-            variant='contained'
+            variant="contained"
             style={{ marginTop: 10, marginLeft: 15 }}
             onClick={type.attribute === 'staffName' ? memberAddSubmit : submit}
           >
@@ -75,8 +70,8 @@ export default function SimpleModal({
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby='simple-modal-title'
-        aria-describedby='simple-modal-description'
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
       >
         {body}
       </Modal>

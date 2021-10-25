@@ -18,12 +18,10 @@ const SideMenu = ({ pageTitle }) => {
 
   return (
     <div className={classes.toolbar}>
-      <Header headerTitle='レポート' />
+      <Header headerTitle="レポート" />
       <SideMenuDrawer />
       <main className={classes.content}>
-        <h1 style={{ color: 'black', margin: '60px 0 0 300px' }}>
-          {pageTitle}
-        </h1>
+        <h1 style={{ color: 'black', margin: '60px 0 0 300px' }}>{pageTitle}</h1>
       </main>
     </div>
   );
