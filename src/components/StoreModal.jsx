@@ -45,7 +45,12 @@ export default function SimpleModal({
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <Grid container direction="row" justifyContent="center" alignItems="center">
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
             id={type.attribute}

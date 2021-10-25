@@ -14,7 +14,12 @@ import Switch from '@material-ui/core/Switch';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-import { storeManager, storeSubManager, department, allStoreAverage } from '../data/data';
+import {
+  storeManager,
+  storeSubManager,
+  department,
+  allStoreAverage,
+} from '../data/data';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import SideMenuDrawer from './SideMenuDrawer';
@@ -383,7 +388,12 @@ function StoreOrganization() {
         <div className={classes.toolbar} />
         <Grid container>
           <Grid item xs={6}>
-            <Grid container direction="column" justifyContent="center" alignItems="center">
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+            >
               <Button
                 variant="contained"
                 className={classes.mainColor}
@@ -394,7 +404,9 @@ function StoreOrganization() {
                   {smData.staffName}
                 </Box>
               </Button>
-              <div style={{ height: '20px', border: '1px solid #c0c0c0' }}></div>
+              <div
+                style={{ height: '20px', border: '1px solid #c0c0c0' }}
+              ></div>
               <Button
                 variant="contained"
                 className={classes.mainColor}
@@ -405,7 +417,9 @@ function StoreOrganization() {
                   {ssmData.staffName}
                 </Box>
               </Button>
-              <div style={{ height: '20px', border: '1px solid #c0c0c0' }}></div>
+              <div
+                style={{ height: '20px', border: '1px solid #c0c0c0' }}
+              ></div>
             </Grid>
             <Grid
               container
@@ -415,7 +429,11 @@ function StoreOrganization() {
               style={{ border: '1px solid #c0c0c0', position: 'relative' }}
             >
               {data.map((item, index) => (
-                <Card key={index} className={classes.cardRoot} variant="outlined">
+                <Card
+                  key={index}
+                  className={classes.cardRoot}
+                  variant="outlined"
+                >
                   <CardContent>
                     <Typography className={classes.title}>
                       <Link to="#">詳しく見る</Link>
@@ -480,11 +498,22 @@ function StoreOrganization() {
             </Grid>
           </Grid>
           <Grid item xs={6}>
-            <Grid container direction="row" justifyContent="flex-start" alignItems="center">
+            <Grid
+              container
+              direction="row"
+              justifyContent="flex-start"
+              alignItems="center"
+            >
               <h2 style={{ marginLeft: 40, marginRight: 10 }}>店舗レベル</h2>
               <FormGroup>
                 <FormControlLabel
-                  control={<Switch checked={checked} onChange={toggleChecked} color="primary" />}
+                  control={
+                    <Switch
+                      checked={checked}
+                      onChange={toggleChecked}
+                      color="primary"
+                    />
+                  }
                   label={checked ? 'ON（全店と比較）' : 'OFF（全店と比較）'}
                 />
               </FormGroup>

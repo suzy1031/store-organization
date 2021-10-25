@@ -1,4 +1,10 @@
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+} from 'recharts';
 
 const SkillsRadarChart = ({ chartData, checked, allStoreAverage }) => {
   const data = [
@@ -54,13 +60,32 @@ const SkillsRadarChart = ({ chartData, checked, allStoreAverage }) => {
   ];
 
   return (
-    <RadarChart cx={300} cy={250} outerRadius={150} width={500} height={500} data={data}>
+    <RadarChart
+      cx={300}
+      cy={250}
+      outerRadius={150}
+      width={500}
+      height={500}
+      data={data}
+    >
       <PolarGrid />
       <PolarAngleAxis dataKey="subject" />
       <PolarRadiusAxis />
-      <Radar name="Mike" dataKey="A" stroke="#17b397" fill="#17b397" fillOpacity={0.6} />
+      <Radar
+        name="Mike"
+        dataKey="A"
+        stroke="#17b397"
+        fill="#17b397"
+        fillOpacity={0.6}
+      />
       {checked && (
-        <Radar name="enemy" dataKey="enemy" stroke="#FF99FF" fill="#FF99FF" fillOpacity={0.5} />
+        <Radar
+          name="enemy"
+          dataKey="enemy"
+          stroke="#FF99FF"
+          fill="#FF99FF"
+          fillOpacity={0.5}
+        />
       )}
     </RadarChart>
   );

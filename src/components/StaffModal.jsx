@@ -50,54 +50,60 @@ export default function SimpleModal({
     <div style={modalStyle} className={classes.paper}>
       <Grid
         container
-        direction='row'
-        justifyContent='center'
-        alignItems='center'
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
       >
         {profile && (
           <>
-          <Avatar
-            alt={profile.staffName}
-            src={profile.image}
-          />
-          <h2 style={{ marginLeft: 5}}>{profile?.staffName}（{switchRole(profile?.role)}）</h2>
-          <Grid
-            container
-            direction="row"
-            justifyContent="flex-start"
-            alignItems="flex-start"
-          >
-          {(profile.role === 0 || profile.role === 1) && (
-            <>
-              {switchRole(profile.role)}レベル: {profile?.smSkills.level}
-              <Line percent={profile?.smSkills.level} strokeWidth="2" trailWidth="2" strokeColor="cornflowerblue" strokeLinecap="square" />
-              <br></br>
-            </>
-          )}
-          </Grid>
-          <Grid
-            container
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-          >
-            {profile.skills.map((skill, index) => (
-              <React.Fragment key={index}>
-                <Box m={0.5}>
-                  <div style={{ fontWeight: 700 }}>{convertSkillName(skill.skillName)}</div>
-                  <Circle
-                    animate
-                    progress={skill.level}
-                    progressColor={levelColor(skill.level)}
-                    textColor={levelColor(skill.level)}
+            <Avatar alt={profile.staffName} src={profile.image} />
+            <h2 style={{ marginLeft: 5 }}>
+              {profile?.staffName}（{switchRole(profile?.role)}）
+            </h2>
+            <Grid
+              container
+              direction="row"
+              justifyContent="flex-start"
+              alignItems="flex-start"
+            >
+              {(profile.role === 0 || profile.role === 1) && (
+                <>
+                  {switchRole(profile.role)}レベル: {profile?.smSkills.level}
+                  <Line
+                    percent={profile?.smSkills.level}
+                    strokeWidth="2"
+                    trailWidth="2"
+                    strokeColor="cornflowerblue"
+                    strokeLinecap="square"
                   />
-                </Box>
-              </React.Fragment>
-            ))}
-          </Grid>
+                  <br></br>
+                </>
+              )}
+            </Grid>
+            <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+            >
+              {profile.skills.map((skill, index) => (
+                <React.Fragment key={index}>
+                  <Box m={0.5}>
+                    <div style={{ fontWeight: 700 }}>
+                      {convertSkillName(skill.skillName)}
+                    </div>
+                    <Circle
+                      animate
+                      progress={skill.level}
+                      progressColor={levelColor(skill.level)}
+                      textColor={levelColor(skill.level)}
+                    />
+                  </Box>
+                </React.Fragment>
+              ))}
+            </Grid>
           </>
         )}
-
       </Grid>
     </div>
   );
@@ -107,8 +113,8 @@ export default function SimpleModal({
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby='simple-modal-title'
-        aria-describedby='simple-modal-description'
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
       >
         {body}
       </Modal>

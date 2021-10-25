@@ -8,17 +8,17 @@ function App() {
   return (
     <Router>
       <CssBaseline />
-      <Route exact path='/' component={StoreOrganization} />
+      <Route exact path="/" component={StoreOrganization} />
       <Route
-        path='/report'
+        path="/report"
         render={() => <SideMenu pageTitle={'これはレポートです'} />}
       />
       <Route
-        path='/todo'
+        path="/todo"
         render={() => <SideMenu pageTitle={'これはTodoです'} />}
       />
       <Route
-        path='/clip'
+        path="/clip"
         render={() => <SideMenu pageTitle={'これはクリップです'} />}
       />
     </Router>
