@@ -16,10 +16,19 @@ import Typography from '@material-ui/core/Typography';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 
+import StoreRadarChart from './StoreRadarChart';
+
 import { levelColorObject } from '../../libs/LevelColor';
 
 const AllAreaOrganization = (props) => {
-  const { classes, data, checked } = props;
+  const {
+    classes,
+    data,
+    checked,
+    chartAreaData,
+    chartAreaDataB,
+    chartAreaDataC,
+  } = props;
   return (
     <Grid container>
       <Grid item xs={5}>
@@ -39,14 +48,13 @@ const AllAreaOrganization = (props) => {
                   <CardContent>
                     <Box display="flex" flexWrap="wrap" sx={{ minWidth: 335 }}>
                       {store.stores.map((profile, index) => (
-                        <>
+                        <React.Fragment key={index}>
                           <div
                             style={{
                               fontSize: 14,
                               fontWeight: 700,
                               margin: '10px 0',
                             }}
-                            key={index}
                           >
                             <Link to="/sm">{profile.storeName}</Link>
                           </div>
@@ -113,7 +121,7 @@ const AllAreaOrganization = (props) => {
                               {profile.newcomerCount}人
                             </div>
                           </Grid>
-                        </>
+                        </React.Fragment>
                       ))}
                     </Box>
                   </CardContent>
@@ -122,6 +130,21 @@ const AllAreaOrganization = (props) => {
             )}
           </React.Fragment>
         ))}
+      </Grid>
+      <Grid item xs={6}>
+        <Grid
+          container
+          direction="row"
+          justifyContent="flex-start"
+          alignItems="center"
+        >
+          <StoreRadarChart
+            chartData={chartAreaData}
+            chartDataB={chartAreaDataB}
+            chartDataC={chartAreaDataC}
+            checked={checked}
+          />
+        </Grid>
       </Grid>
     </Grid>
   );

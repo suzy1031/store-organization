@@ -108,6 +108,23 @@ const SvAreaOrganization = () => {
   };
 
   const [allAreaData, setAllAreaData] = useState(area);
+  const [chartAreaData, setChartAreaData] = useState(initData);
+  const [chartAreaDataB, setChartAreaDataB] = useState(initData);
+  const [chartAreaDataC, setChartAreaDataC] = useState(initData);
+  useEffect(() => {
+    allAreaData.map((store) => {
+      if (store.areaName === '南関東') {
+        setChartAreaData(store.skills);
+      }
+      if (store.areaName === '東海') {
+        setChartAreaDataB(store.skills);
+      }
+      if (store.areaName === '関西') {
+        setChartAreaDataC(store.skills);
+      }
+      return {};
+    });
+  }, []);
 
   return (
     <div className={classes.root}>
@@ -234,6 +251,9 @@ const SvAreaOrganization = () => {
             data={allAreaData}
             classes={classes}
             checked={checked}
+            chartAreaData={chartAreaData}
+            chartAreaDataB={chartAreaDataB}
+            chartAreaDataC={chartAreaDataC}
           />
         )}
       </main>
