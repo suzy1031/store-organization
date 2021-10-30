@@ -269,3 +269,106 @@ export const stores = [
     ],
   },
 ];
+
+export const area = [
+  {
+    id: 'id_0',
+    style: {
+      background: '#17b397',
+    },
+    areaName: '南関東',
+    skills: { sm: 75, ssm: 70, hr: 85, vmd: 75, cs: 75, stock: 70, pc: 90 },
+    stores: [
+      {
+        storeName: '渋谷店',
+        smLevel: 80,
+        ssmLevel: 75,
+        leaderCount: 2,
+        newcomerCount: 3,
+      },
+      {
+        storeName: '原宿店',
+        smLevel: 85,
+        ssmLevel: 75,
+        leaderCount: 3,
+        newcomerCount: 0,
+      },
+      {
+        storeName: '新宿店',
+        smLevel: 65,
+        ssmLevel: 85,
+        leaderCount: 2,
+        newcomerCount: 1,
+      },
+    ],
+  },
+  {
+    id: 'id_1',
+    style: {
+      background: '#FF99FF',
+    },
+    areaName: '東海',
+    skills: { sm: 90, ssm: 65, hr: 70, vmd: 85, cs: 65, stock: 80, pc: 70 },
+    stores: [
+      {
+        storeName: '名駅店',
+        smLevel: 90,
+        ssmLevel: 59,
+        leaderCount: 2,
+        newcomerCount: 3,
+      },
+      {
+        storeName: '岡崎店',
+        smLevel: 85,
+        ssmLevel: 85,
+        leaderCount: 1,
+        newcomerCount: 0,
+      },
+      {
+        storeName: '豊橋店',
+        smLevel: 75,
+        ssmLevel: 90,
+        leaderCount: 1,
+        newcomerCount: 4,
+      },
+    ],
+  },
+  {
+    id: 'id_2',
+    style: {
+      background: '#FF6600',
+    },
+    areaName: '関西',
+    skills: { sm: 65, ssm: 85, hr: 90, vmd: 65, cs: 65, stock: 75, pc: 60 },
+    stores: [
+      {
+        storeName: '御堂筋店',
+        smLevel: 80,
+        ssmLevel: 80,
+        leaderCount: 3,
+        newcomerCount: 1,
+      },
+      {
+        storeName: 'なんば店',
+        smLevel: 75,
+        ssmLevel: 65,
+        leaderCount: 1,
+        newcomerCount: 1,
+      },
+      {
+        storeName: '新大阪店',
+        smLevel: 80,
+        ssmLevel: 70,
+        leaderCount: 2,
+        newcomerCount: 0,
+      },
+      {
+        storeName: '東大阪店',
+        smLevel: 70,
+        ssmLevel: 85,
+        leaderCount: 3,
+        newcomerCount: 4,
+      },
+    ],
+  },
+];

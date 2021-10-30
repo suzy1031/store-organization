@@ -25,7 +25,7 @@ import {
 
 import switchRole from '../../libs/SwitchRole';
 import convertSkillName from '../../libs/ConvertSkillName';
-import levelColor from '../../libs/LevelColor';
+import { levelColor } from '../../libs/LevelColor';
 
 import Header from '../Common/Header';
 import SideMenuDrawer from '../Common/SideMenuDrawer';

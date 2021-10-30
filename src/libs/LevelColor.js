@@ -1,4 +1,4 @@
-const levelColor = (level) => {
+export const levelColor = (level) => {
   if (level >= 80) {
     return 'cornflowerblue';
   } else if (60 < level && level < 80) {
@@ -7,4 +7,15 @@ const levelColor = (level) => {
     return '#FF6666';
   }
 };
-export default levelColor;
+
+export const levelColorObject = (level) => {
+  if (level >= 80) {
+    return {
+      background: 'cornflowerblue',
+    };
+  } else if (60 < level && level < 80) {
+    return { background: '#FF9900' };
+  } else {
+    return { background: '#FF6666' };
+  }
+};
