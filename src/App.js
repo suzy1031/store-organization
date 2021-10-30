@@ -1,26 +1,29 @@
 import './App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import StoreOrganization from './components/StoreOrganization';
-import SideMenu from './components/SideMenu';
+import StoreOrganization from './ui/Sm/StoreOrganization';
+import CommonLayout from './ui/Common/CommonLayout';
+import SvAreaOrganization from './ui/Sv/SvAreaOrganization';
 
 function App() {
   return (
     <Router>
       <CssBaseline />
-      <Route exact path="/" component={StoreOrganization} />
+      <Route path="/sm" component={StoreOrganization} />
       <Route
-        path="/report"
-        render={() => <SideMenu pageTitle={'これはレポートです'} />}
+        exact
+        path="/"
+        render={() => <CommonLayout pageTitle={'これはレポートです'} />}
       />
       <Route
         path="/todo"
-        render={() => <SideMenu pageTitle={'これはTodoです'} />}
+        render={() => <CommonLayout pageTitle={'これはTodoです'} />}
       />
       <Route
         path="/clip"
-        render={() => <SideMenu pageTitle={'これはクリップです'} />}
+        render={() => <CommonLayout pageTitle={'これはクリップです'} />}
       />
+      <Route path="/sv" component={SvAreaOrganization} />
     </Router>
   );
 }
