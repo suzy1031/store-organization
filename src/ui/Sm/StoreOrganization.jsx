@@ -26,6 +26,7 @@ import {
 import switchRole from '../../libs/SwitchRole';
 import convertSkillName from '../../libs/ConvertSkillName';
 import { levelColor } from '../../libs/LevelColor';
+import useCalculation from '../../application/CalcStoreAverage';
 
 import Header from '../Common/Header';
 import SideMenuDrawer from '../Common/SideMenuDrawer';
@@ -77,6 +78,8 @@ function StoreOrganization() {
   });
 
   const [selected, setSelected] = useState('');
+
+  // モーダル表示切替え
   const handleOpen = (buttonType) => {
     setSelected(buttonType);
     if (buttonType === 'departmentName') {
@@ -93,6 +96,7 @@ function StoreOrganization() {
     setOpen(true);
   };
 
+  // モーダル閉じる
   const handleClose = () => {
     setOpen(false);
   };
@@ -106,6 +110,8 @@ function StoreOrganization() {
   };
 
   const [data, setData] = useState(department);
+
+  // 部門追加
   const submit = () => {
     const pushData = {
       ...value,
@@ -115,6 +121,7 @@ function StoreOrganization() {
     setOpen(false);
   };
 
+  // メンバー追加
   const memberAddSubmit = () => {
     const inputMember = {
       ...value,
@@ -140,185 +147,43 @@ function StoreOrganization() {
   const [staffData, setStaffData] = useState(null);
   const [smData, setSmData] = useState(storeManager);
   const [ssmData, setSsmData] = useState(storeSubManager);
+
+  // メンバーモーダル開く
   const handleStaffDetail = (profile) => {
     setStaffData(profile);
     setStaffModalOpen(true);
   };
 
+  // メンバーモーダル閉じる
   const handleStaffModalClose = () => {
     setStaffModalOpen(false);
   };
 
   const [chartData, setChartData] = useState(initData);
+
+  // レーダーチャートデータオブジェクト
+  const { hr, vmd, cs, stock, pc } = useCalculation(
+    smData,
+    ssmData,
+    department,
+  );
+
   useEffect(() => {
-    const result = calcStoreSkillLevel();
     setChartData({
       sm: smData.smSkills.level,
       ssm: ssmData.smSkills.level,
-      hr: result.hr,
-      vmd: result.vmd,
-      cs: result.cs,
-      stock: result.stock,
-      pc: result.pc,
+      hr: hr,
+      vmd: vmd,
+      cs: cs,
+      stock: stock,
+      pc: pc,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const calcStoreSkillLevel = () => {
-    let hrLevelResult = 0;
-    let vmdLevelResult = 0;
-    let csLevelResult = 0;
-    let stockLevelResult = 0;
-    let pcLevelResult = 0;
-
-    let storeMemberCount = 0;
-
-    const HR = 'hr';
-    const VMD = 'vmd';
-    const CS = 'cs';
-    const STOCK = 'stock';
-    const PC = 'pc';
-
-    /**
-     * {hr: 99, vmd: 99, cs: 99, stock: 99, pc: 99}のobject型にキャストする処理
-     * 店長、副店長・・・のobjectを作成
-     * 変数に足して代入する
-     */
-
-    // 店長
-    for (let i = 0; i < smData.skills.length; i++) {
-      if (smData.skills[i].skillName === HR) {
-        hrLevelResult += smData.skills[i].level;
-        storeMemberCount += 1;
-      }
-      if (smData.skills[i].skillName === VMD) {
-        vmdLevelResult += smData.skills[i].level;
-      }
-      if (smData.skills[i].skillName === CS) {
-        csLevelResult += smData.skills[i].level;
-      }
-      if (smData.skills[i].skillName === STOCK) {
-        stockLevelResult += smData.skills[i].level;
-      }
-      if (smData.skills[i].skillName === PC) {
-        pcLevelResult += smData.skills[i].level;
-      }
-    }
-
-    // 副店長
-    for (let i = 0; i < ssmData.skills.length; i++) {
-      if (ssmData.skills[i].skillName === HR) {
-        hrLevelResult += ssmData.skills[i].level;
-        storeMemberCount += 1;
-      }
-      if (ssmData.skills[i].skillName === VMD) {
-        vmdLevelResult += ssmData.skills[i].level;
-      }
-      if (ssmData.skills[i].skillName === CS) {
-        csLevelResult += ssmData.skills[i].level;
-      }
-      if (ssmData.skills[i].skillName === STOCK) {
-        stockLevelResult += ssmData.skills[i].level;
-      }
-      if (ssmData.skills[i].skillName === PC) {
-        pcLevelResult += ssmData.skills[i].level;
-      }
-    }
-
-    // todoループ処理修正 => 部門追加に対応する必要有り
-    // アクセサリー
-    const accTeamHrSkill = department[0].members;
-    storeMemberCount += department[0].members.length;
-    accTeamHrSkill.map((getSkills) => {
-      getSkills.skills.map((skill) => {
-        if (skill.skillName === HR) {
-          hrLevelResult += skill.level;
-        }
-        if (skill.skillName === VMD) {
-          vmdLevelResult += skill.level;
-        }
-        if (skill.skillName === CS) {
-          csLevelResult += skill.level;
-        }
-        if (skill.skillName === STOCK) {
-          stockLevelResult += skill.level;
-        }
-        if (skill.skillName === PC) {
-          pcLevelResult += skill.level;
-        }
-      });
-    });
-
-    // 靴下
-    const socTeamHrSkill = department[1].members;
-    storeMemberCount += department[1].members.length;
-    socTeamHrSkill.map((getSkills) => {
-      getSkills.skills.map((skill) => {
-        if (skill.skillName === HR) {
-          hrLevelResult += skill.level;
-        }
-        if (skill.skillName === VMD) {
-          vmdLevelResult += skill.level;
-        }
-        if (skill.skillName === CS) {
-          csLevelResult += skill.level;
-        }
-        if (skill.skillName === STOCK) {
-          stockLevelResult += skill.level;
-        }
-        if (skill.skillName === PC) {
-          pcLevelResult += skill.level;
-        }
-      });
-    });
-
-    // 雑貨
-    const zakkaTeamHrSkill = department[2].members;
-    storeMemberCount += department[2].members.length;
-    zakkaTeamHrSkill.map((getSkills) => {
-      getSkills.skills.map((skill) => {
-        if (skill.skillName === HR) {
-          hrLevelResult += skill.level;
-        }
-        if (skill.skillName === VMD) {
-          vmdLevelResult += skill.level;
-        }
-        if (skill.skillName === CS) {
-          csLevelResult += skill.level;
-        }
-        if (skill.skillName === STOCK) {
-          stockLevelResult += skill.level;
-        }
-        if (skill.skillName === PC) {
-          pcLevelResult += skill.level;
-        }
-      });
-    });
-
-    let hrAverageValue = 0;
-    let vmdAverageValue = 0;
-    let csAverageValue = 0;
-    let stockAverageValue = 0;
-    let pcAverageValue = 0;
-
-    if (storeMemberCount) {
-      hrAverageValue = Math.round(hrLevelResult / storeMemberCount);
-      vmdAverageValue = Math.round(vmdLevelResult / storeMemberCount);
-      csAverageValue = Math.round(csLevelResult / storeMemberCount);
-      stockAverageValue = Math.round(stockLevelResult / storeMemberCount);
-      pcAverageValue = Math.round(pcLevelResult / storeMemberCount);
-    }
-    return {
-      hr: hrAverageValue,
-      vmd: vmdAverageValue,
-      cs: csAverageValue,
-      stock: stockAverageValue,
-      pc: pcAverageValue,
-    };
-  };
-
   const [checked, setChecked] = useState(false);
 
+  // 全店レーダーチャート表示
   const toggleChecked = () => {
     setChecked((prev) => !prev);
   };

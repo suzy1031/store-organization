@@ -10,9 +10,12 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 import Header from '../Common/Header';
 import SideMenuDrawer from '../Common/SideMenuDrawer';
@@ -20,7 +23,7 @@ import StoreRadarChart from './StoreRadarChart';
 import CheckButtonGroup from './CheckButtonGroup';
 import AllAreaOrganization from './AllAreaOrganization';
 
-import { stores, initData, area } from '../../services/data';
+import { stores, initData, area, otherArea } from '../../services/data';
 import switchRole from '../../libs/SwitchRole';
 
 const useStyles = makeStyles((theme) => ({
@@ -38,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    paddingTop: theme.spacing(3),
     marginLeft: 300,
   },
 
@@ -67,6 +70,10 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '20px',
     marginLeft: 3,
     color: '#FFF',
+  },
+  selectFormControl: {
+    margin: theme.spacing(1),
+    width: 200,
   },
 }));
 
@@ -107,24 +114,23 @@ const SvAreaOrganization = () => {
     setRadioChecked(event.target.value);
   };
 
-  const [allAreaData, setAllAreaData] = useState(area);
-  const [chartAreaData, setChartAreaData] = useState(initData);
-  const [chartAreaDataB, setChartAreaDataB] = useState(initData);
-  const [chartAreaDataC, setChartAreaDataC] = useState(initData);
-  useEffect(() => {
-    allAreaData.map((store) => {
-      if (store.areaName === '南関東') {
-        setChartAreaData(store.skills);
-      }
-      if (store.areaName === '東海') {
-        setChartAreaDataB(store.skills);
-      }
-      if (store.areaName === '関西') {
-        setChartAreaDataC(store.skills);
-      }
-      return {};
-    });
-  }, []);
+  const [myAreaData, setMyAreaData] = useState(area);
+  const [otherAreaData, setOtherAreaData] = useState(otherArea);
+  const [selected, setSelected] = useState('');
+  const [targetData, setTargetData] = useState(null);
+  const handleSelectChange = (event) => {
+    setSelected(event.target.value);
+    const selectedValue = event.target.value;
+
+    if (selectedValue) {
+      otherAreaData.map((store) => {
+        if (store.areaName === selectedValue) {
+          setTargetData(store);
+        }
+        return {};
+      });
+    }
+  };
 
   return (
     <div className={classes.root}>
@@ -138,6 +144,7 @@ const SvAreaOrganization = () => {
             direction="column"
             justifyContent="flex-start"
             alignItems="flex-start"
+            style={{ width: 400 }}
           >
             <Grid>
               <FormLabel component="legend">エリア選択</FormLabel>
@@ -168,12 +175,37 @@ const SvAreaOrganization = () => {
                 checked={checked}
               />
             ) : (
-              <CheckButtonGroup
-                labelName="エリア選択"
-                data={allAreaData}
-                handleChange={handleChange}
-                checked={checked}
-              />
+              <Grid
+                container
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+              >
+                <FormControl
+                  variant="outlined"
+                  className={classes.selectFormControl}
+                >
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    比較エリア
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={selected}
+                    onChange={handleSelectChange}
+                    label="比較エリア"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {otherArea.map((store, index) => (
+                      <MenuItem key={index} value={store.areaName}>
+                        {store.areaName}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
             )}
           </Grid>
         </Grid>
@@ -248,12 +280,13 @@ const SvAreaOrganization = () => {
           </Grid>
         ) : (
           <AllAreaOrganization
-            data={allAreaData}
+            data={myAreaData}
+            otherArea={otherAreaData}
             classes={classes}
             checked={checked}
-            chartAreaData={chartAreaData}
-            chartAreaDataB={chartAreaDataB}
-            chartAreaDataC={chartAreaDataC}
+            selected={selected}
+            handleSelectChange={handleSelectChange}
+            targetData={targetData}
           />
         )}
       </main>

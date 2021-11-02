@@ -276,7 +276,7 @@ export const area = [
     style: {
       background: '#17b397',
     },
-    areaName: '南関東',
+    areaName: '南関東（自エリア）',
     skills: { sm: 75, ssm: 70, hr: 85, vmd: 75, cs: 75, stock: 70, pc: 90 },
     stores: [
       {
@@ -302,8 +302,11 @@ export const area = [
       },
     ],
   },
+];
+
+export const otherArea = [
   {
-    id: 'id_1',
+    id: 'id_0',
     style: {
       background: '#FF99FF',
     },
@@ -334,7 +337,7 @@ export const area = [
     ],
   },
   {
-    id: 'id_2',
+    id: 'id_1',
     style: {
       background: '#FF6600',
     },
