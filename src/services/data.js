@@ -375,3 +375,26 @@ export const otherArea = [
     ],
   },
 ];
+
+export const talkData = [
+  {
+    day: 1,
+    time: 9,
+    members: 1,
+  },
+  {
+    day: 2,
+    time: 61,
+    members: 5,
+  },
+  {
+    day: 4,
+    time: 10,
+    members: 4,
+  },
+  {
+    day: 5,
+    time: 60,
+    members: 2,
+  },
+];
