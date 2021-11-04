@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import getMonth from 'date-fns/getMonth';
+import lastDayOfMonth from 'date-fns/lastDayOfMonth';
+import format from 'date-fns/format';
 
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,18 +24,21 @@ import {
   department,
   allStoreAverage,
   initData,
+  talkData,
 } from '../../services/data';
 
 import switchRole from '../../libs/SwitchRole';
 import convertSkillName from '../../libs/ConvertSkillName';
 import { levelColor } from '../../libs/LevelColor';
 import useCalculation from '../../application/CalcStoreAverage';
+import useGenerateMonthObject from '../../application/GrowLawn';
 
 import Header from '../Common/Header';
 import SideMenuDrawer from '../Common/SideMenuDrawer';
 import StoreModal from './StoreModal';
 import StaffModal from './StaffModal';
 import SkillsRadarChart from './SkillsRadarChart';
+import TalkCard from './TalkCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -188,6 +194,32 @@ function StoreOrganization() {
     setChecked((prev) => !prev);
   };
 
+  // TalkCard
+  const [isNext, setIsNext] = useState(false);
+  const [isDefault, setIsDefault] = useState(true);
+  const handleFinish = () => {
+    setIsDefault(!isDefault);
+    setIsNext(!isNext);
+  };
+
+  const [radioChecked, setRadioChecked] = useState('9');
+
+  const [membersName, setMembersName] = useState([]);
+  const [checkedMember, setCheckedMember] = useState({});
+  useEffect(() => {
+    const members = data.map((department) =>
+      department.members.map((staffs) => staffs.staffName),
+    );
+    let membersArray = [];
+    for (let i = 0; i < members.length; i++) {
+      membersArray.push(...members[i]);
+    }
+    setMembersName(membersArray);
+  }, []);
+
+  const { days, month, thisMonthData, setThisMonthData } =
+    useGenerateMonthObject();
+
   return (
     <div className={classes.root}>
       <Header headerTitle="組織図" />
@@ -334,6 +366,23 @@ function StoreOrganization() {
           </Grid>
         </Grid>
       </main>
+      <div style={{ position: 'fixed', bottom: 10, right: 10 }}>
+        <TalkCard
+          isNext={isNext}
+          setIsNext={setIsNext}
+          setRadioChecked={setRadioChecked}
+          radioChecked={radioChecked}
+          isDefault={isDefault}
+          setIsDefault={setIsDefault}
+          membersName={membersName}
+          checked={checkedMember}
+          handleFinish={handleFinish}
+          setCheckedMember={setCheckedMember}
+          days={parseInt(days)}
+          month={month + 1}
+          thisMonthData={thisMonthData}
+        />
+      </div>
       <StoreModal
         open={open}
         handleClose={handleClose}
