@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import {
   Radar,
   RadarChart,
@@ -6,7 +7,7 @@ import {
   PolarRadiusAxis,
 } from 'recharts';
 
-const SkillsRadarChart = ({ chartData, checked, allStoreAverage }) => {
+const SkillsRadarChart = memo(({ chartData, checked, allStoreAverage }) => {
   const data = [
     {
       subject: '店長力',
@@ -89,5 +90,5 @@ const SkillsRadarChart = ({ chartData, checked, allStoreAverage }) => {
       )}
     </RadarChart>
   );
-};
+});
 export default SkillsRadarChart;
