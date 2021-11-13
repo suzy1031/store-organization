@@ -13,15 +13,12 @@ function App() {
       <Route
         exact
         path="/"
-        render={() => <CommonLayout pageTitle={'これはレポートです'} />}
+        render={() => <CommonLayout pageTitle={'レポート'} />}
       />
-      <Route
-        path="/todo"
-        render={() => <CommonLayout pageTitle={'これはTodoです'} />}
-      />
+      <Route path="/todo" render={() => <CommonLayout pageTitle={'Todo'} />} />
       <Route
         path="/clip"
-        render={() => <CommonLayout pageTitle={'これはクリップです'} />}
+        render={() => <CommonLayout pageTitle={'クリップ'} />}
       />
       <Route path="/sv" component={SvAreaOrganization} />
     </Router>
