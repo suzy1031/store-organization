@@ -13,13 +13,33 @@ export const storeManager = {
   image: '/images/kohei.jpg',
   role: 0,
   skills: [
-    { skillName: 'hr', level: 99 },
-    { skillName: 'vmd', level: 99 },
-    { skillName: 'cs', level: 99 },
-    { skillName: 'stock', level: 99 },
-    { skillName: 'pc', level: 99 },
+    { skillName: 'hr', level: 90 },
+    { skillName: 'vmd', level: 90 },
+    { skillName: 'cs', level: 90 },
+    { skillName: 'stock', level: 90 },
+    { skillName: 'pc', level: 90 },
   ],
-  smSkills: { skillName: 'sm', level: 99 },
+  smSkills: { skillName: 'sm', level: 90 },
+  viewCount: [
+    {
+      clipTotal: 250,
+      clipViewCount: 200,
+      depClipTotal: 175,
+      depClipViewCount: 160,
+      todoTotal: 160,
+      todoCleared: 147,
+      depTodoTotal: 50,
+      depTodoCleared: 50,
+    },
+  ],
+  hrData: [
+    {
+      lastMonth: 160,
+      lastThreeMonth: 480,
+      lastSixMonth: 960,
+      lastOneYear: 1920,
+    },
+  ],
 };
 
 export const storeSubManager = {
@@ -34,6 +54,26 @@ export const storeSubManager = {
     { skillName: 'pc', level: 80 },
   ],
   smSkills: { skillName: 'sub', level: 88 },
+  viewCount: [
+    {
+      clipTotal: 250,
+      clipViewCount: 200,
+      depClipTotal: 175,
+      depClipViewCount: 160,
+      todoTotal: 160,
+      todoCleared: 147,
+      depTodoTotal: 50,
+      depTodoCleared: 50,
+    },
+  ],
+  hrData: [
+    {
+      lastMonth: 160,
+      lastThreeMonth: 480,
+      lastSixMonth: 960,
+      lastOneYear: 1920,
+    },
+  ],
 };
 
 export const allStoreAverage = {
@@ -61,6 +101,26 @@ export const department = [
           { skillName: 'stock', level: 70 },
           { skillName: 'pc', level: 70 },
         ],
+        viewCount: [
+          {
+            clipTotal: 250,
+            clipViewCount: 200,
+            depClipTotal: 175,
+            depClipViewCount: 160,
+            todoTotal: 160,
+            todoCleared: 147,
+            depTodoTotal: 50,
+            depTodoCleared: 50,
+          },
+        ],
+        hrData: [
+          {
+            lastMonth: 160,
+            lastThreeMonth: 480,
+            lastSixMonth: 960,
+            lastOneYear: 1920,
+          },
+        ],
       },
       {
         staffName: '綾瀬 はるか',
@@ -73,6 +133,26 @@ export const department = [
           { skillName: 'stock', level: 80 },
           { skillName: 'pc', level: 60 },
         ],
+        viewCount: [
+          {
+            clipTotal: 250,
+            clipViewCount: 100,
+            depClipTotal: 175,
+            depClipViewCount: 120,
+            todoTotal: 160,
+            todoCleared: 95,
+            depTodoTotal: 50,
+            depTodoCleared: 30,
+          },
+        ],
+        hrData: [
+          {
+            lastMonth: 160,
+            lastThreeMonth: 400,
+            lastSixMonth: 900,
+            lastOneYear: 900,
+          },
+        ],
       },
       {
         staffName: '有村 架純',
@@ -84,6 +164,26 @@ export const department = [
           { skillName: 'cs', level: 85 },
           { skillName: 'stock', level: 85 },
           { skillName: 'pc', level: 50 },
+        ],
+        viewCount: [
+          {
+            clipTotal: 250,
+            clipViewCount: 250,
+            depClipTotal: 175,
+            depClipViewCount: 175,
+            todoTotal: 160,
+            todoCleared: 160,
+            depTodoTotal: 50,
+            depTodoCleared: 50,
+          },
+        ],
+        hrData: [
+          {
+            lastMonth: 80,
+            lastThreeMonth: 240,
+            lastSixMonth: 420,
+            lastOneYear: 840,
+          },
         ],
       },
     ],
@@ -102,6 +202,26 @@ export const department = [
           { skillName: 'stock', level: 70 },
           { skillName: 'pc', level: 70 },
         ],
+        viewCount: [
+          {
+            clipTotal: 250,
+            clipViewCount: 200,
+            depClipTotal: 175,
+            depClipViewCount: 160,
+            todoTotal: 160,
+            todoCleared: 147,
+            depTodoTotal: 50,
+            depTodoCleared: 50,
+          },
+        ],
+        hrData: [
+          {
+            lastMonth: 160,
+            lastThreeMonth: 480,
+            lastSixMonth: 960,
+            lastOneYear: 1920,
+          },
+        ],
       },
       {
         staffName: '加藤 綾子',
@@ -114,17 +234,51 @@ export const department = [
           { skillName: 'stock', level: 80 },
           { skillName: 'pc', level: 60 },
         ],
+        viewCount: [
+          {
+            clipTotal: 250,
+            clipViewCount: 100,
+            depClipTotal: 175,
+            depClipViewCount: 120,
+            todoTotal: 160,
+            todoCleared: 95,
+            depTodoTotal: 50,
+            depTodoCleared: 30,
+          },
+        ],
+        hrData: [
+          {
+            lastMonth: 160,
+            lastThreeMonth: 400,
+            lastSixMonth: 900,
+            lastOneYear: 900,
+          },
+        ],
       },
       {
         staffName: '森 香澄',
         image: '/images/mori.jpg',
-        role: 3,
-        skills: [
-          { skillName: 'hr', level: 60 },
-          { skillName: 'vmd', level: 75 },
-          { skillName: 'cs', level: 85 },
-          { skillName: 'stock', level: 85 },
-          { skillName: 'pc', level: 50 },
+        role: 4,
+        skills: [],
+        viewCount: [
+          {
+            clipTotal: 250,
+            clipViewCount: 0,
+            depClipTotal: 175,
+            depClipViewCount: 0,
+            todoTotal: 160,
+            todoCleared: 0,
+            depTodoTotal: 50,
+            depTodoCleared: 0,
+          },
+        ],
+        hrData: [
+          {
+            lastMonth: 0,
+            lastThreeMonth: 0,
+            lastSixMonth: 0,
+            lastOneYear: 0,
+          },
         ],
       },
     ],
@@ -143,6 +297,26 @@ export const department = [
           { skillName: 'stock', level: 70 },
           { skillName: 'pc', level: 70 },
         ],
+        viewCount: [
+          {
+            clipTotal: 250,
+            clipViewCount: 200,
+            depClipTotal: 175,
+            depClipViewCount: 160,
+            todoTotal: 160,
+            todoCleared: 147,
+            depTodoTotal: 50,
+            depTodoCleared: 50,
+          },
+        ],
+        hrData: [
+          {
+            lastMonth: 160,
+            lastThreeMonth: 480,
+            lastSixMonth: 960,
+            lastOneYear: 1920,
+          },
+        ],
       },
       {
         staffName: 'みちょぱ',
@@ -155,17 +329,51 @@ export const department = [
           { skillName: 'stock', level: 80 },
           { skillName: 'pc', level: 60 },
         ],
+        viewCount: [
+          {
+            clipTotal: 250,
+            clipViewCount: 100,
+            depClipTotal: 175,
+            depClipViewCount: 120,
+            todoTotal: 160,
+            todoCleared: 95,
+            depTodoTotal: 50,
+            depTodoCleared: 30,
+          },
+        ],
+        hrData: [
+          {
+            lastMonth: 160,
+            lastThreeMonth: 400,
+            lastSixMonth: 900,
+            lastOneYear: 900,
+          },
+        ],
       },
       {
         staffName: 'めるる',
         image: '/images/ikumi.jpeg',
-        role: 3,
-        skills: [
-          { skillName: 'hr', level: 60 },
-          { skillName: 'vmd', level: 75 },
-          { skillName: 'cs', level: 85 },
-          { skillName: 'stock', level: 85 },
-          { skillName: 'pc', level: 50 },
+        role: 4,
+        skills: [],
+        viewCount: [
+          {
+            clipTotal: 250,
+            clipViewCount: 0,
+            depClipTotal: 175,
+            depClipViewCount: 0,
+            todoTotal: 160,
+            todoCleared: 0,
+            depTodoTotal: 50,
+            depTodoCleared: 0,
+          },
+        ],
+        hrData: [
+          {
+            lastMonth: 0,
+            lastThreeMonth: 0,
+            lastSixMonth: 0,
+            lastOneYear: 0,
+          },
         ],
       },
     ],
