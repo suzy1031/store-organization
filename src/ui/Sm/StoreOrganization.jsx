@@ -9,6 +9,7 @@ import {
   storeSubManager,
   department,
   initData,
+  allStoreAverage,
 } from '../../services/data';
 
 import useCalculation from '../../application/CalcStoreAverage';
@@ -206,7 +207,17 @@ function StoreOrganization() {
         />
       </Hidden>
       <Hidden smUp>
-        <SpContents />
+        <SpContents
+          smData={smData}
+          ssmData={ssmData}
+          data={data}
+          checked={checked}
+          toggleChecked={toggleChecked}
+          chartData={chartData}
+          staffData={staffData}
+          setStaffData={setStaffData}
+          allStoreAverage={allStoreAverage}
+        />
       </Hidden>
     </div>
   );
