@@ -134,7 +134,21 @@ const SvAreaOrganization = () => {
         />
       </Hidden>
       <Hidden smUp>
-        <SpContents />
+        <SpContents
+          radioChecked={radioChecked}
+          handleAreaChange={handleAreaChange}
+          areaStoreData={areaStoreData}
+          handleChange={handleChange}
+          checked={checked}
+          selected={selected}
+          handleSelectChange={handleSelectChange}
+          chartData={chartData}
+          chartDataB={chartDataB}
+          chartDataC={chartDataC}
+          myAreaData={myAreaData}
+          otherAreaData={otherAreaData}
+          targetData={targetData}
+        />
       </Hidden>
     </div>
   );
